@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:32 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/06 19:34:58 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/08 19:26:38 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@
 class	Contact
 {
 	// methodes
-	private :
+	public :
+	Contact();
+
+	void	setContact();
+	void	displayPart() const;
+	void	displayFull() const;
+	// void	displayResizedAttr(std::string);
 
 	// attributs
 	protected :
