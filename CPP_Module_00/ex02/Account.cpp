@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:20:04 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/11 19:55:24 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/11 20:39:03 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include <iomanip>
 #include <iostream>
 
-int	_nbAccounts = 0;
-int	_totalAmount = 0;
-int	_totalNbDeposits = 0;
-int	_totalNbWithdrawals = 0;
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 // Constructor by default
 Account::Account()
@@ -41,7 +41,7 @@ Account::Account(int initial_deposit)
 	_totalNbDeposits = 0;
 	_totalNbWithdrawals = 0;
 	_displayTimestamp();
-	std::cout<<_accountIndex<<";amount:"<<_amount<<";created"<<std::endl;
+	std::cout<<" index:"<<_accountIndex<<";amount:"<<_amount<<";created"<<std::endl;
 }
 
 // Destructor
@@ -134,5 +134,5 @@ void	Account::_displayTimestamp()
 		<< std::setfill('0') << std::setw(2) << now->tm_hour // Heures
 		<< std::setfill('0') << std::setw(2) << now->tm_min  // Minutes
 		<< std::setfill('0') << std::setw(2) << now->tm_sec  // Secondes
-		<< "]" << std::endl;
+		<< "]";
 }
