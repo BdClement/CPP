@@ -6,70 +6,89 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:16 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/08 20:02:04 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:00:58 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_header.hpp"
 #include "PhoneBook.hpp"
 
-// Constructeur par defaut
+// Constructor by default
 PhoneBook::PhoneBook()
 {
-
+	m_nb_contact = 0;
 }
 
-void	PhoneBook::newContact(void)
+/////////////////////// ADD Command /////////////////////
+void	PhoneBook::executeAdd()
+{
+	newContact();
+	std::cout << std::endl;
+}
+
+void	PhoneBook::newContact()
 {
 	Contact	ajout;
 
 	ajout.setContact();
-	// ajout.afficher();
-	// ajout.resizeAttr();
-	m_queue_contact.push(ajout);
-	if (m_queue_contact.size() > 8)
-		m_queue_contact.pop();
+	pushContact(ajout);
 }
 
-void	PhoneBook::displayIndex(int index)
+void	PhoneBook::pushContact(Contact &new_contact)
 {
-	m_contact_tab[index].displayFull();
+	for(int i = 7; i > 0; i--)
+	{
+		m_contact_tab[i] = m_contact_tab[i - 1];
+	}
+	m_contact_tab[0] = new_contact;
+	if (m_nb_contact < 8)
+		m_nb_contact++;
 }
 
-void	PhoneBook::displayTab() const
+///////////////////////// SEARCH Command //////////////////////
+void	PhoneBook::excecuteSearch()
 {
-	std::cout << "     Index|First name| Last name|  Nickname"<< std::endl;
-	for( int i = 0; i <= (int)m_queue_contact.size() - 1; i++)
+	if (m_nb_contact != 0)
+	{
+		int	toBeDisplayed;
+		displayPhoneBook();
+		std::cout << "Entrez l'index du contact que vous souhaitez consulter : ";
+		if (std::cin >> toBeDisplayed)
+			displayContact(toBeDisplayed);
+		else
+		{
+			std::cout << "Ceci n'est pas un nombre enier valide" << std::endl;
+		}
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+	else
+		std::cout << "Le repertoire est vide" << std::endl;
+	std::cout << std::endl;
+}
+
+// Display the PhoneBook with the format asked
+void	PhoneBook::displayPhoneBook() const
+{
+	if (m_nb_contact != 0)
+		std::cout << "     Index|First name| Last name|  Nickname"<< std::endl;
+	for( int i = 0; i <= m_nb_contact - 1; i++)
 	{
 		std::ostringstream oss;
 		oss << i;
 		std::string indexStr = oss.str();
 		displayResizedStr(indexStr);
-		// Display resized index
 		std::cout << "|";
-		m_contact_tab[i].displayPart();
+		m_contact_tab[i].displayContactSearch();
 		std::cout << std::endl;
 	}
 }
 
-void	PhoneBook::displayQueue() const
+// Display all information about a specific Contact
+void	PhoneBook::displayContact(int index)
 {
-	std::queue<Contact> queue_temp = m_queue_contact;
-	while (!queue_temp.empty())
-	{
-		queue_temp.front().displayPart();
-		queue_temp.pop();
-	}
-	std::cout << std::endl;
-}
-
-void	PhoneBook::fillTab()
-{
-	std::queue<Contact> queue_temp = m_queue_contact;
-
-	while (!queue_temp.empty())
-	{
-		m_contact_tab[queue_temp.size() - 1] = queue_temp.front();
-		queue_temp.pop();
-	}
+	if (index < 0 or index > m_nb_contact - 1 or index > 7)
+		std::cout << "L'index est incorrect" << std::endl;
+	else
+		m_contact_tab[index].displayContact();
 }

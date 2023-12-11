@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:39 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/08 19:28:42 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:37:10 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,5 @@
 #include "Contact.hpp"
 
 void	displayResizedStr(std::string resized);
-
-// Les autres librairies
 
 #endif

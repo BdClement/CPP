@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:50 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/08 19:58:19 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:36:29 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,11 @@ int	main()
 		std::getline(std::cin, cmd);
 
 		if (cmd == "ADD")
-		{
-			repertoire.newContact();
-			repertoire.fillTab();
-		}
+			repertoire.executeAdd();
 		else if (cmd == "SEARCH")
-		{
-			int	toBeDisplayed;
-			repertoire.displayTab();
-			std::cout << "Entrez l'index du contact que vous souhaitez consulter";
-			if (std::cin >> toBeDisplayed)
-				repertoire.displayIndex(toBeDisplayed);
-			else
-				std::cout << "Ceci n'est pas un nombre enier valide" << std::endl;
-
-		}
+			repertoire.excecuteSearch();
 		else if (cmd != "EXIT")
-			std::cout << "Mauvais commande" << std::endl;
-		std::cout << std::endl;
-		std::cout << "Vous avez entre la commande : " << cmd << std::endl;// TEST
+			std::cout << "Mauvaise commande" << std::endl << std::endl;
 	}
 	return 0;
 }

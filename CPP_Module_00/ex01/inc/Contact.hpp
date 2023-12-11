@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:32 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/08 19:26:38 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:36:34 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ class	Contact
 	Contact();
 
 	void	setContact();
-	void	displayPart() const;
-	void	displayFull() const;
-	// void	displayResizedAttr(std::string);
+	void	getInfo(std::string &str, std::string info);
+	void	displayContactSearch() const;
+	void	displayContact() const;
+	bool	isEmpty(std::string str) const;
 
 	// attributs
 	protected :
