@@ -1,0 +1,9 @@
+Salut comment ca va ?
+
+Ce fichier est un fichier test !
+
+Le programme doit pouvoir creer un fichier similaire a celui-ci.
+Les occurences de 2eme argument doivent etre changees avec le 3e argument.
+
+J'espere que ca marche.
+

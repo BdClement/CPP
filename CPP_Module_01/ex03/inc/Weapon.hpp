@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 17:36:19 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/12 17:52:21 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2023/12/13 15:47:27 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 
 #include <iostream>
 #include <string>
-#include "HumanA.hpp"
-#include "HumanB.hpp"
 
 class Weapon
 {
     public:
-    Weapon(/* args */);
+    Weapon();
+    Weapon(std::string name);
     ~Weapon();
-    
-    Weapon& const getType();
+
+    std::string const& getType();
     void    setType(std::string type);
-    
+
     private:
     std::string m_type;
 };

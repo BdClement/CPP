@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:44:06 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/12 16:28:04 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2023/12/13 16:18:13 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ int main()
     {
          tab[i].announce();
     }
-    //for (int i = 0; i < 5; i++)
-    //{
-      //  delete &tab[i]; // A checker 
-    //}
     delete []tab;
     return 0;
 }

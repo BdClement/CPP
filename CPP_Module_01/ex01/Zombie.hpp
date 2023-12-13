@@ -23,3 +23,15 @@ class Zombie
 Zombie* zombieHorde(int N, std::string name);
 
 #endif
+
+class nomADefinir
+{
+    public:
+    // Méthodes de la classe
+    nomADefinir();
+    ~nomADefinir();
+
+    private:
+    // Attributs membres de la classe
+
+};
