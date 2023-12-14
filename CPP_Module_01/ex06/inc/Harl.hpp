@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 17:34:27 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/14 18:27:54 by Enfoirax         ###   ########.fr       */
+/*   Created: 2023/12/14 18:51:11 by Enfoirax          #+#    #+#             */
+/*   Updated: 2023/12/14 19:22:57 by Enfoirax         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
-#include <iostream>
+#ifndef __HARL_HPP
+#define __HARL_HPP
 
-int main()
+#include <string>
+
+class Harl
 {
-    Harl    harl;
-    harl.complain("DEBUG");
-    harl.complain("INFO");
-    harl.complain("WARNING");
-    harl.complain("ERROR");
-    harl.complain("FAKE COMMAND");
-    return 0;
-}
+    public:
+    Harl();
+    ~Harl();
+
+    void    complain(std::string level);
+
+    private:
+    void    debug(void);
+    void    info(void);
+    void    warning(void);
+    void    error(void);
+
+};
+
+#endif

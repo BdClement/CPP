@@ -1,6 +1,6 @@
 ## MAIN VARIABLES
 
-NAME =			Harl
+NAME =			HarlFilter
 
 CC = 			c++
 

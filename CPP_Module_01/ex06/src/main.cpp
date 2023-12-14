@@ -5,21 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 17:34:27 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/14 18:27:54 by Enfoirax         ###   ########.fr       */
+/*   Created: 2023/12/14 19:00:21 by Enfoirax          #+#    #+#             */
+/*   Updated: 2023/12/14 19:52:32 by Enfoirax         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <iostream>
 
-int main()
+int main(int argc, char **argv)
 {
-    Harl    harl;
-    harl.complain("DEBUG");
-    harl.complain("INFO");
-    harl.complain("WARNING");
-    harl.complain("ERROR");
-    harl.complain("FAKE COMMAND");
+    if (argc != 2)
+        std::cout<<"Harl needs one, and only one argument"<<std::endl;
+    else
+    {
+        Harl  harl;
+        harl.complain(argv[1]);
+    }
     return 0;
 }

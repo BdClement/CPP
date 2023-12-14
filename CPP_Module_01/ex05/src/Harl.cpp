@@ -1,3 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/14 16:11:35 by Enfoirax          #+#    #+#             */
+/*   Updated: 2023/12/14 18:26:42 by Enfoirax         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Harl.hpp"
+#include <iostream>
+#include <string>
+
+const std::string stringTab[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+// Constructor
+Harl::Harl()
+{
+
+}
+
+// Destructor 
+Harl::~Harl()
+{
+	
+}
+
+void    Harl::complain(std::string level)
+{
+	// Declaration d'un tableau de pointeur sur fonction
+	void (Harl::*functionPointer[4])(void) = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error
+	};
+	// Recherche de l'index correspondant a l'argument
+	int	i(0);
+	while (i < 4)
+	{
+		if (stringTab[i] == level)
+			break ;
+		i++;
+	}
+	// Execution de la fonction
+	if (i < 4)
+		(this->*functionPointer[i])();
+	else
+		std::cout<<"Harl is not configured for this. Sorry"<<std::endl;
+} 
+
+ void    Harl::debug(void)
+ {
+	std::cout<<"I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do !"<<std::endl;
+ }
+void    Harl::info(void)
+{
+	std::cout<< "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger ! If you did, I wouldn’t be asking for more !" <<std::endl;
+}
+
+void    Harl::warning(void)
+{
+	std::cout<< "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." <<std::endl;
+}
+
+void    Harl::error(void)
+{
+	std::cout<< "This is unacceptable ! I want to speak to the manager now." <<std::endl;
+}
 // snippets class
 // {
 //     	"Class Declaration": {
