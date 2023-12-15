@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:16 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/11 17:00:58 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:00:08 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	PhoneBook::displayPhoneBook() const
 }
 
 // Display all information about a specific Contact
-void	PhoneBook::displayContact(int index)
+void	PhoneBook::displayContact(int index) const
 {
 	if (index < 0 or index > m_nb_contact - 1 or index > 7)
 		std::cout << "L'index est incorrect" << std::endl;

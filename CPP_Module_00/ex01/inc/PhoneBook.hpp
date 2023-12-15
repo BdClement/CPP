@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:10 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/11 17:01:57 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:58:16 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ class PhoneBook
 	void	pushContact(Contact &new_contact);
 	void	excecuteSearch();
 	void	displayPhoneBook() const;
-	void	displayContact(int);
+	void	displayContact(int) const;
 	void	addContact();
 
-	protected:
+	private:
 	Contact	m_contact_tab[MAX_CONTACT];
 	int		m_nb_contact;
 };

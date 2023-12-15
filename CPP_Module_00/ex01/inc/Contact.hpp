@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:32 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/11 14:36:34 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:54:37 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class	Contact
 	bool	isEmpty(std::string str) const;
 
 	// attributs
-	protected :
+	private :
 	std::string	m_first_name;
 	std::string	m_last_name;
 	std::string	m_nick_name;
