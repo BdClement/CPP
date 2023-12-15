@@ -40,7 +40,7 @@ INC_HD =		-I $(HDIR)
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-				$(CC) $(CFLAGS) $(INC_HD) $(OBJS) -o $@
+				$(CC) $(CFLAGS) $(OBJS) -o $@
 
 $(OBJS):		$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.cpp $(HD)
 				mkdir -p $(OBJ_DIR)
