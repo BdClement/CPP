@@ -6,11 +6,11 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:47 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/11 14:55:50 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/15 18:45:57 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main_header.hpp"
+#include "PhoneBook.hpp"
 #include "Contact.hpp"
 
 // Constructor by default
@@ -19,7 +19,7 @@ Contact::Contact()
 
 }
 
-// Checks if the string isn't empty or filled whit non alphanumeric char
+// Checks if the string is empty or filled whit non alphanumeric char
 bool	Contact::isEmpty(std::string str)const
 {
 	if (str.empty())
@@ -47,7 +47,8 @@ void	Contact::getInfo(std::string& str, std::string info)
 	while (isEmpty(str))
 	{
 		std::cout << "Entrez " << info << " du nouveau contact"<< " : ";
-		std::getline(std::cin, str);
+		if (!std::getline(std::cin, str))
+			exit(-1);
 		if (!isEmpty(str))
 			break ;
 		else
@@ -61,11 +62,11 @@ void	Contact::getInfo(std::string& str, std::string info)
 // Display Contact's info for PhoneBook tab
 void	Contact::displayContactSearch() const
 {
-	displayResizedStr(m_first_name);
+	PhoneBook::displayResizedStr(m_first_name);
 	std::cout << "|";
-	displayResizedStr(m_last_name);
+	PhoneBook::displayResizedStr(m_last_name);
 	std::cout << "|";
-	displayResizedStr(m_nick_name);
+	PhoneBook::displayResizedStr(m_nick_name);
 }
 
 void	Contact::displayContact() const

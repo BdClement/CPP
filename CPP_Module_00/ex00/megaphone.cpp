@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:20:36 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/06 18:14:59 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:09:09 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 int	main(int ac, char **av)
 {
 	int	i = 1;
-	(void)av;
 
 	if (ac > 1)
 	{
 		while (i < ac)
 		{
-			for (int j = 0;j < (int)strlen(av[i]); j++)
-				av[i][j] = toupper(av[i][j]);
-			std::cout << av[i];
+			std::string str = av[i];
+			for (int j = 0;j < (int)str.size(); j++)
+				str[j] = toupper(str[j]);
+			std::cout << str;
 			i++;
 		}
 	}

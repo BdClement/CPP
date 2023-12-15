@@ -6,11 +6,10 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:16 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/15 12:00:08 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/15 18:46:04 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main_header.hpp"
 #include "PhoneBook.hpp"
 
 // Constructor by default
@@ -20,21 +19,17 @@ PhoneBook::PhoneBook()
 }
 
 /////////////////////// ADD Command /////////////////////
-void	PhoneBook::executeAdd()
-{
-	newContact();
-	std::cout << std::endl;
-}
 
 void	PhoneBook::newContact()
 {
 	Contact	ajout;
 
 	ajout.setContact();
-	pushContact(ajout);
+	putContactInPhoneBook(ajout);
+	std::cout << std::endl;
 }
 
-void	PhoneBook::pushContact(Contact &new_contact)
+void	PhoneBook::putContactInPhoneBook(Contact &new_contact)
 {
 	for(int i = 7; i > 0; i--)
 	{
@@ -46,21 +41,21 @@ void	PhoneBook::pushContact(Contact &new_contact)
 }
 
 ///////////////////////// SEARCH Command //////////////////////
-void	PhoneBook::excecuteSearch()
+void	PhoneBook::Search()
 {
 	if (m_nb_contact != 0)
 	{
-		int	toBeDisplayed;
+		std::string toBeDisplayed;
 		displayPhoneBook();
 		std::cout << "Entrez l'index du contact que vous souhaitez consulter : ";
-		if (std::cin >> toBeDisplayed)
-			displayContact(toBeDisplayed);
-		else
+		if (!std::getline(std::cin, toBeDisplayed))
+			exit(-1);
+		else if (toBeDisplayed.size() != 1 || !isdigit(toBeDisplayed[0]))
 		{
-			std::cout << "Ceci n'est pas un nombre enier valide" << std::endl;
+			std::cout << "Invalid index" << std::endl;
 		}
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		else
+			displayContact(toBeDisplayed);
 	}
 	else
 		std::cout << "Le repertoire est vide" << std::endl;
@@ -85,10 +80,26 @@ void	PhoneBook::displayPhoneBook() const
 }
 
 // Display all information about a specific Contact
-void	PhoneBook::displayContact(int index) const
+void	PhoneBook::displayContact(std::string index) const
 {
-	if (index < 0 or index > m_nb_contact - 1 or index > 7)
+	int	num_index =   atoi(index.c_str());
+	if (num_index < 0 or num_index > m_nb_contact - 1 or num_index > 7)
 		std::cout << "L'index est incorrect" << std::endl;
 	else
-		m_contact_tab[index].displayContact();
+		m_contact_tab[num_index].displayContact();
+}
+
+void	PhoneBook::displayResizedStr(std::string resized)
+{
+	if(resized.size() > 10)
+	{
+		resized.resize(9);
+		resized.insert(9, ".");
+	}
+	else if(resized.size() < 10)
+	{
+		while (resized.size() != 10)
+			resized.insert(0, " ");
+	}
+	std::cout << resized;
 }

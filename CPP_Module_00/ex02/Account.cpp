@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:20:04 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/11 20:39:03 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/15 19:09:38 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
+//awk '{ $1=""; print $0 }'
 // Constructor by default
 Account::Account()
 {
@@ -55,7 +56,7 @@ Account::~Account()
 void	Account::displayAccountsInfos()
 {
 	_displayTimestamp();
-	std::cout<<"accounts:"<<getNbAccounts()<<";total:"<<getTotalAmount();
+	std::cout<<" accounts:"<<getNbAccounts()<<";total:"<<getTotalAmount();
 	std::cout<<";deposits:"<<getNbDeposits()<<";withdrawals:"<<getNbWithdrawals()<<std::endl;
 }
 
@@ -82,7 +83,7 @@ int	Account::getNbWithdrawals()
 void	Account::makeDeposit(int deposit)
 {
 	_displayTimestamp();
-	std::cout<<" index:"<<_accountIndex<<";p_amount"<<_amount<<";deposit:"<<deposit;
+	std::cout<<" index:"<<_accountIndex<<";p_amount:"<<_amount<<";deposit:"<<deposit;
 	_nbDeposits++;
 	_totalNbDeposits++;
 	_amount += deposit;
@@ -93,7 +94,7 @@ void	Account::makeDeposit(int deposit)
 bool	Account::makeWithdrawal(int withdrawal)
 {
 	_displayTimestamp();
-	std::cout<<" index:"<<_accountIndex<<";p_amount"<<_amount<<";withdrawals:";
+	std::cout<<" index:"<<_accountIndex<<";p_amount:"<<_amount<<";withdrawal:";
 	if (checkAmount() < withdrawal)
 	{
 		std::cout<<"refused"<<std::endl;
@@ -103,7 +104,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 	_totalNbWithdrawals++;
 	_amount -= withdrawal;
 	_totalAmount -= withdrawal;
-	std::cout<<_nbWithdrawals<<";amount:"<<_amount<<";nb_withdrawals:"<<_nbWithdrawals<<std::endl;
+	std::cout<<withdrawal<<";amount:"<<_amount<<";nb_withdrawals:"<<_nbWithdrawals<<std::endl;
 	return true;
 }
 

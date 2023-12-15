@@ -6,17 +6,17 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:53:32 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/15 11:54:37 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/15 18:42:51 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK
 #define PHONEBOOK
 
-#include "main_header.hpp"
-#include "PhoneBook.hpp"
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include "PhoneBook.hpp"
 
 class	Contact
 {
