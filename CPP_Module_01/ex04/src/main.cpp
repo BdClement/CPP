@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:20:27 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/18 16:17:39 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:41:39 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,6 @@ int	main(int argc, char **argv)
 			std::cerr<<"The file can't be open"<<std::endl;
 			return -1;
 		}
-
-
-
 	}
 	return 0;
 }
