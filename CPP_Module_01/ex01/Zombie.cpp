@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:10:52 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/12 16:11:09 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:42:59 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 // Constructor by default
 Zombie::Zombie()
 {
-    
+
 }
+
 Zombie::Zombie(std::string name):m_name(name)
 {
     announce();

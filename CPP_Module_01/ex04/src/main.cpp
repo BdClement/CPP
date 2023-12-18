@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:20:27 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/15 16:11:52 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:17:39 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,20 @@ void	fill_outfile(char **arg, std::ifstream& input_file, std::ofstream& outfile)
 
 void	new_file_replace(char **arg, std::ifstream& input_file)
 {
+	// Test si le fichier est vide
+	char	c = input_file.peek();
+	if (c == EOF)
+	{
+		std::cerr<<"The file is empty"<<std::endl;
+		exit(EXIT_FAILURE);
+	}
 	//Ouverture du nouveau fichier
 	std::string outfile_name = (std::string)arg[1] + ".replace";
 	const char	*file_name =outfile_name.c_str();
 	std::ofstream outfile(file_name, std::ofstream::out);
 	if (!outfile.is_open())
 	{
-		std::cout<<"The new file couldn't be open"<<std::endl;
+		std::cerr<<"The new file couldn't be open"<<std::endl;
 		input_file.close();
 		exit(EXIT_FAILURE);
 	}
@@ -60,7 +67,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 4 || !argv[2][0] || !argv[3][0])
 	{
-		std::cout<<"This program required 3 valids arguments"<<std::endl;
+		std::cerr<<"This program required 3 valids arguments"<<std::endl;
 		return -1;
 	}
 	else
