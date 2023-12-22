@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:40:11 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/19 22:03:11 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:01:00 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Fixed::~Fixed()
 
 Fixed &   Fixed::operator=(Fixed const & equal)
 {
-    std::cout<<"Copy assignement operator called"<<std::endl;
+    std::cout<<"Copy assignment operator called"<<std::endl;
     if (this != &equal)
         this->m_value = equal.getRawBits();
     return *this;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 19:40:11 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/20 15:47:36 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2023/12/22 12:10:18 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ Fixed::Fixed(int const value)
 {
     std::cout<<"Int constructor called"<<std::endl;
     m_value = value << m_frac_part;
-    if (m_value > std::numeric_limits<int>::max())
-        m_value = std::numeric_limits<int>::max();
-    else if (m_value < std::numeric_limits<int>::min())
-        m_value = std::numeric_limits<int>::min();
+    // if (m_value > std::numeric_limits<int>::max())
+    //     m_value = std::numeric_limits<int>::max();
+    // else if (m_value < std::numeric_limits<int>::min())
+    //     m_value = std::numeric_limits<int>::min();
 }
 
-// Pour convertir le float on ne peux pas seulement decaler les bits puisque le 
+// Pour convertir le float on ne peux pas seulement decaler les bits puisque le
 // décalage ne prend en compte que la partie entiere du float
 // On multiplie donc en passant par un double pour pouvoir arrondir via round()
 // a l'entier le plus proche et gagner en précision
@@ -48,13 +48,13 @@ Fixed::Fixed(float const value)
 {
     std::cout<<"Float constructor called"<<std::endl;
     // double doubleValue = static_cast<double>(value) * (1 << m_frac_part);
-    // double roundedValue = std::round(doubleValue); 
-    float roundedValue = std::roundf(value * (1 << m_frac_part));
+    // double roundedValue = std::round(doubleValue);
+    float roundedValue = roundf(value * (1 << m_frac_part));
     m_value = static_cast<int>(roundedValue);
-    if (m_value > std::numeric_limits<int>::max())
-        m_value = std::numeric_limits<int>::max();
-    else if (m_value < std::numeric_limits<int>::min())
-        m_value = std::numeric_limits<int>::min();
+    // if (m_value > std::numeric_limits<int>::max())
+    //     m_value = std::numeric_limits<int>::max();
+    // else if (m_value < std::numeric_limits<int>::min())
+    //     m_value = std::numeric_limits<int>::min();
 }
 
 Fixed::~Fixed()
