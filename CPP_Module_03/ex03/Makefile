@@ -17,7 +17,8 @@ SRC_DIR = 		./src
 SRCS =			$(SRC_DIR)/main.cpp\
 				$(SRC_DIR)/ClapTrap.cpp\
 				$(SRC_DIR)/ScavTrap.cpp\
-
+				$(SRC_DIR)/FragTrap.cpp\
+				$(SRC_DIR)/DiamondTrap.cpp\
 
 ## OBJECTS
 
@@ -31,6 +32,8 @@ HDIR = 			./inc
 
 HD = 			$(HDIR)/ClapTrap.hpp\
 				$(HDIR)/ScavTrap.hpp\
+				$(HDIR)/FragTrap.hpp\
+				$(HDIR)/DiamondTrap.hpp\
 
 INC_HD =		-I $(HDIR)
 
