@@ -15,12 +15,11 @@ RM_RF =			rm -rf
 SRC_DIR = 		./src
 
 SRCS =			$(SRC_DIR)/main.cpp\
-				$(SRC_DIR)/Animal.cpp\
-				$(SRC_DIR)/Dog.cpp\
-				$(SRC_DIR)/Cat.cpp\
-				$(SRC_DIR)/WrongAnimal.cpp\
-				$(SRC_DIR)/WrongCat.cpp\
-				$(SRC_DIR)/Brain.cpp\
+				$(SRC_DIR)/AMateria.cpp\
+				$(SRC_DIR)/Character.cpp\
+				$(SRC_DIR)/Cure.cpp\
+				$(SRC_DIR)/Ice.cpp\
+				$(SRC_DIR)/MateriaSource.cpp\
 
 ## OBJECTS
 
@@ -32,12 +31,13 @@ OBJS = 			$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 HDIR = 			./inc
 
-HD = 			$(HDIR)/Animal.hpp\
-				$(HDIR)/Dog.hpp\
-				$(HDIR)/Cat.hpp\
-				$(HDIR)/WrongAnimal.hpp\
-				$(HDIR)/WrongCat.hpp\
-				$(HDIR)/Brain.hpp\
+HD = 			$(HDIR)/AMateria.hpp\
+				$(HDIR)/Character.hpp\
+				$(HDIR)/Cure.hpp\
+				$(HDIR)/Ice.hpp\
+				$(HDIR)/ICharacter.hpp\
+				$(HDIR)/IMateriaSource.hpp\
+				$(HDIR)/MateriaSource.hpp\
 
 INC_HD =		-I $(HDIR)
 
