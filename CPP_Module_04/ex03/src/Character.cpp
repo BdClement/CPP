@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:41:59 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/27 21:17:23 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/28 19:36:06 by Enfoirax         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,20 @@ void Character::equip(AMateria* m)
 		std::cout<<"L'inventaire est full"<< std::endl;
 		return ;
 	}
+	else if (m == NULL)
+	{
+		std::cout<<"Il n'y a pas de materia a equiper"<< std::endl;
+		return ;
+	}
 	for (int i = 0; i < 4; i++)
 	{
 		if (m_inventory[i] == NULL)
+		{
 			m_inventory[i] = m;
+			return ;
+		}
 	}
+	std::cout<<this->m_name<<" n'a pas pus 'equiper de la materia"<< std::endl;
 	// Ajouter la materia passe en parametre a m_inventory si possible
 }
 
@@ -95,7 +104,10 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	m_inventory[idx]->use(target);
+	if (m_inventory[idx] != NULL)
+		m_inventory[idx]->use(target);
+	else
+		std::cout<<"Nothing to use here"<<std::endl;
 }
 
 bool	Character::inventory_is_full()

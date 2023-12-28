@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:05:19 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/27 21:23:01 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/28 19:32:09 by Enfoirax         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ MateriaSource::MateriaSource(MateriaSource const& asign)
 MateriaSource::~MateriaSource()
 {
     std::cout<<"MateriaSource destructor called"<<std::endl;
-	// delete m_inventory ?
+	// delete m_inventory 
+	// for (int i = 0; i < 4; i++) // Probleme Illegal construction
+	// {
+	// 	if (m_materia[i] != NULL)
+	// 		delete m_materia[i];
+	// }
 }
 
 MateriaSource &   MateriaSource::operator=(MateriaSource const & equal)
@@ -60,7 +65,10 @@ void	MateriaSource::learnMateria(AMateria *m)
 	for (int i = 0; i < 4; i++)
 	{
 		if (m_materia[i] == NULL)
+		{
 			m_materia[i] = m;
+			return ;
+		}
 	}
 	// Copie la AMateria passe en parametre t la stocke en mémoire afin de la cloner
 	// plus tard
@@ -73,6 +81,7 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 		if (type == m_materia[i]->getType())
 			return m_materia[i]->clone();
 	}
+	std::cout<<"La materia de type "<<type<<" n'a pas pu etre créer"<<std::endl;
 	return 0;
 	// Retourne une nouvelle Materia. Celle-ci est une copie de celle apprise précédemment
 	// par la MateriaSource et dont le type est le même que celui passé en paramètre.
