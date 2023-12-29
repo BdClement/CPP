@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 13:16:41 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/26 14:14:05 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:46:55 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	ScavTrap::attack(const std::string& target)
 	{
 		std::cout<<"ScavTrap "<<*this<<" attacks "<< target<<" causing "<<m_attack_damage<<" points of damage"<<std::endl;
 		--m_energy;
-		--m_hit_points;
 	}
 	else
 		std::cout<<"ScavTrap "<<*this<<" needs to have energy and hit points to attack "<< target<<std::endl;

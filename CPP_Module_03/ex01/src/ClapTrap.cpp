@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 18:44:59 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/26 13:48:37 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2023/12/29 11:44:36 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	ClapTrap::attack(const std::string& target)
 	{
 		std::cout<<"ClapTrap "<<*this<<" attacks "<< target<<" causing "<<m_attack_damage<<" points of damage"<<std::endl;
 		--m_energy;
-		--m_hit_points;
 	}
 	else
 		std::cout<<"ClapTrap "<<*this<<" needs to have energy and hit points to attack "<< target<<std::endl;
@@ -96,7 +95,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout<<"ClapTrap "<<*this<<" repairs himself "<<amount<<" hit points"<<std::endl;
 		m_hit_points += amount;
 		--m_energy;
-		--m_hit_points;
 	}
 	else
 		std::cout<<*this<<" is dead, it's too late"<<std::endl;
