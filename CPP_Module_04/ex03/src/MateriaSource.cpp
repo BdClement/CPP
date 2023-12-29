@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:05:19 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/28 19:32:09 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2023/12/29 22:47:27 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
+
+AMateria* historic[1000] = {};
 
 MateriaSource::MateriaSource()
 {
@@ -21,32 +23,38 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(MateriaSource const& asign)
 {
-    std::cout<<"MateriaSource copy constructor called"<<std::endl;
+    // std::cout<<"MateriaSource copy constructor called"<<std::endl;
 	for (int i = 0; i < 4; i++)
 		this->m_materia[i] = asign.clone(i);
 }
 
 MateriaSource::~MateriaSource()
 {
-    std::cout<<"MateriaSource destructor called"<<std::endl;
-	// delete m_inventory 
-	// for (int i = 0; i < 4; i++) // Probleme Illegal construction
-	// {
-	// 	if (m_materia[i] != NULL)
-	// 		delete m_materia[i];
-	// }
+    // std::cout<<"MateriaSource destructor called"<<std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (m_materia[i] != NULL)
+		{
+			delete m_materia[i];
+			m_materia[i] = NULL;
+		}
+	}
+	free_historic();
 }
 
 MateriaSource &   MateriaSource::operator=(MateriaSource const & equal)
 {
-	std::cout<<"Copy MateriaSource assignment operator called"<<std::endl;
+	// std::cout<<"Copy MateriaSource assignment operator called"<<std::endl;
 	if (this != &equal)
 	{
 		// Liberation des anciennes materia
 		for (int i = 0; i < 4; i++)
 		{
 			if (m_materia[i] != NULL)
+			{
 				delete m_materia[i];
+				m_materia[i] = NULL;
+			}
 		}
 		// Affectation de mon inventaire
 		for (int i = 0; i < 4; i++)
@@ -60,6 +68,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 	if (materia_tab_is_full())
 	{
 		std::cout<<"Les materias sont trop nombreuses"<< std::endl;
+		add_to_historic(m);
 		return ;
 	}
 	for (int i = 0; i < 4; i++)
@@ -70,8 +79,6 @@ void	MateriaSource::learnMateria(AMateria *m)
 			return ;
 		}
 	}
-	// Copie la AMateria passe en parametre t la stocke en mémoire afin de la cloner
-	// plus tard
 }
 
 AMateria*	MateriaSource::createMateria(std::string const & type)
@@ -79,13 +86,14 @@ AMateria*	MateriaSource::createMateria(std::string const & type)
 	for (int i = 0; i < 4; i++)
 	{
 		if (type == m_materia[i]->getType())
-			return m_materia[i]->clone();
+		{
+			AMateria *tmp = m_materia[i]->clone();
+			add_to_historic(tmp);
+			return tmp;
+		}
 	}
 	std::cout<<"La materia de type "<<type<<" n'a pas pu etre créer"<<std::endl;
 	return 0;
-	// Retourne une nouvelle Materia. Celle-ci est une copie de celle apprise précédemment
-	// par la MateriaSource et dont le type est le même que celui passé en paramètre.
-	// Retourne 0 si le type est inconnu
 }
 
 AMateria*	MateriaSource::clone(int idx) const
@@ -101,4 +109,31 @@ bool	MateriaSource::materia_tab_is_full()
 			return false;
 	}
 	return true;
+}
+
+void	MateriaSource::add_to_historic(AMateria* m)
+{
+	for (int i = 0; i < 1000; i++)
+	{
+		if (historic[i] == NULL)
+		{
+			historic[i] = m;
+			return ;
+		}
+	}
+	std::cout<<"Warning : Historic is not big enough !"<<std::endl;
+}
+
+void	MateriaSource::free_historic()
+{
+	for (int i = 0; i < 1000; i++)
+	{
+		if (historic[i] != NULL)
+		{
+			delete historic[i];
+			historic[i] = NULL;
+		}
+		else
+			return ;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:59:12 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/28 17:57:29 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2023/12/29 22:47:35 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include "IMateriaSource.hpp"
 #include "AMateria.hpp"
 
+
+
+extern AMateria* historic[1000];
 class AMateria;
 
 class MateriaSource : public IMateriaSource
@@ -32,6 +35,8 @@ class MateriaSource : public IMateriaSource
 	virtual AMateria* createMateria(std::string const & type);
 	AMateria*		clone(int idx) const;
 	bool		materia_tab_is_full();
+	void	add_to_historic(AMateria* m);
+	void	free_historic();
 
 	private:
 	AMateria	*m_materia[4];

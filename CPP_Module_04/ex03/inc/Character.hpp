@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:34:34 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/27 21:07:08 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/29 22:46:28 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Character : public ICharacter
 	virtual void use(int idx, ICharacter& target);
 	AMateria*	clone(int idx) const;
 	bool		inventory_is_full();
-
+	void		add_to_historic(AMateria* m) const;
 
 	private:
 	std::string	m_name;

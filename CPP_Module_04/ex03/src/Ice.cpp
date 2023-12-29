@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:42:36 by clbernar          #+#    #+#             */
-/*   Updated: 2023/12/27 21:18:30 by clbernar         ###   ########.fr       */
+/*   Updated: 2023/12/29 19:36:08 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,25 @@
 
 Ice::Ice()
 {
-    std::cout<<"Ice default constructor called"<<std::endl;
+    // std::cout<<"Ice default constructor called"<<std::endl;
 	m_type = "ice";
 }
 
 Ice::Ice(Ice const& asign)
 {
-    std::cout<<"Ice copy constructor called"<<std::endl;
-	*this = asign;
+    // std::cout<<"Ice copy constructor called"<<std::endl;
+	this->m_type = asign.m_type;
 }
 
 Ice::~Ice()
 {
-    std::cout<<"Ice destructor called"<<std::endl;
+    // std::cout<<"Ice destructor called"<<std::endl;
 }
 
 Ice &   Ice::operator=(Ice const & equal)
 {
-	std::cout<<"Copy Ice assignment operator called"<<std::endl;
+	// std::cout<<"Copy Ice assignment operator called"<<std::endl;
 	(void)equal;
-	// if (this != &equal)
-	// {
-	// 	// ?
-	// }
 	return *this;
 }
 
