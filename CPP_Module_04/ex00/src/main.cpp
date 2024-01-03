@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 18:35:14 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/26 20:37:50 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:11:43 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ int main()
     std::cout<<"//// Test avec les classes WrongCat et WrongAnimal ////"<<std::endl;
     const WrongAnimal* meta2 = new WrongAnimal();
     const WrongAnimal* i2 = new WrongCat();
+    // const WrongCat* i3 = dynamic_cast<const WrongCat*>(i2);
     std::cout << i2->getType() << " " << std::endl;
-    i2->makeSound();
     meta2->makeSound();
+    i2->makeSound();
+    // i3->makeSound();
     delete meta2;
     delete  i2;
     return 0;

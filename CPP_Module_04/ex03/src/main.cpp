@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 18:35:14 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/29 22:48:30 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/03 13:17:47 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main()
     std::cout<<std::endl<<std::endl;
 
     ICharacter* me = new Character("me");
-    std::cout<<"* La Materia source tente 6 create"<<std::endl;
+    std::cout<<"* La Materia source tente 5 create"<<std::endl;
     std::cout<<"Me tente 2x de s'equipe avec ice et 3x avec cure *"<<std::endl;
     AMateria* tmp;
     tmp = src->createMateria("ice");

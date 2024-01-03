@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 18:35:14 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/27 16:01:35 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:37:05 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int main()
     Dog basic;
     basic.affectIdeas("Une idee", 0);
     {
-    Dog tmp = basic;
+        Dog tmp = basic;
+        std::cout<< tmp.getIdeas(0) <<std::endl;
     }
     std::cout<< basic.getIdeas(0) <<std::endl;
     std::cout<<std::endl<<std::endl;

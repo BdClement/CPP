@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 18:35:14 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/27 16:56:16 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:51:58 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int main()
 {
-    // AAnimal test;
+    // AAnimal test;// Erreur de compilation
     std::cout<<"Tests en creant un tableau d'objets AAnimal\nLa moitie sont des Dogs, l'autre moitie sont des Cats\n"<<std::endl;
     std::cout<<"INITIALISATION"<<std::endl;
     AAnimal* tab_animal[6];

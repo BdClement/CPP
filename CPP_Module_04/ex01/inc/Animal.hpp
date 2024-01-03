@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 19:02:10 by Enfoirax          #+#    #+#             */
-/*   Updated: 2023/12/26 20:19:16 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:44:18 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,4 @@ class Animal
 
 std::ostream &  operator<<(std::ostream & output, Animal const & input);
 
-#endif 
+#endif
