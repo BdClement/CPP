@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:09:13 by Enfoirax          #+#    #+#             */
-/*   Updated: 2024/01/09 18:54:17 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:15:29 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void    Form::beSigned(Bureaucrat& bureaucrat)
 
 Form::GradeTooHighException::GradeTooHighException(std::string sentence) throw() : m_sentence(sentence)
 {
-	std::cout<<"GradeTooHighExcepetion constructor called"<<std::endl;
+	// std::cout<<"GradeTooHighExcepetion constructor called"<<std::endl;
 }
 
 const char*	Form::GradeTooHighException::what() const throw()
@@ -100,12 +100,12 @@ const char*	Form::GradeTooHighException::what() const throw()
 
 Form::GradeTooHighException::~GradeTooHighException() throw()
 {
-	std::cout<<"GradeTooHighExcepetion destructor called"<<std::endl;
+	// std::cout<<"GradeTooHighExcepetion destructor called"<<std::endl;
 }
 
 Form::GradeTooLowException::GradeTooLowException(std::string sentence) throw() : m_sentence(sentence)
 {
-	std::cout<<"GradeTooLowExcepetion constructor called"<<std::endl;
+	// std::cout<<"GradeTooLowExcepetion constructor called"<<std::endl;
 }
 
 const char*	Form::GradeTooLowException::what() const throw()
@@ -115,7 +115,7 @@ const char*	Form::GradeTooLowException::what() const throw()
 
 Form::GradeTooLowException::~GradeTooLowException() throw()
 {
-	std::cout<<"GradeTooLowExcepetion destructor called"<<std::endl;
+	// std::cout<<"GradeTooLowExcepetion destructor called"<<std::endl;
 }
 
 

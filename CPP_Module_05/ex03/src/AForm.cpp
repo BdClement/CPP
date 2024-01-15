@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:09:13 by Enfoirax          #+#    #+#             */
-/*   Updated: 2024/01/15 20:22:55 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:47:54 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ AForm::AForm(std::string const name, int const grade_to_sign, int const grade_to
         m_name(name),
         m_signed(false)
 {
-    std::cout<<"AForm "<<name<<" default constructor called"<<std::endl;
+    // std::cout<<"AForm "<<name<<" default constructor called"<<std::endl;
 }
 
 AForm::AForm(AForm const& asign)
@@ -27,17 +27,17 @@ AForm::AForm(AForm const& asign)
         m_name(asign.getName()),
         m_signed(asign.isSigned())
 {
-    std::cout<<"AForm copy constructor called"<<std::endl;
+    // std::cout<<"AForm copy constructor called"<<std::endl;
 }
 
 AForm::~AForm()
 {
-	std::cout<<"AForm destructor called"<<std::endl;
+	// std::cout<<"AForm destructor called"<<std::endl;
 }
 
 AForm& AForm::operator=(AForm const & equal)
 {
-	std::cout<<"AForm assignation operator called"<<std::endl;
+	// std::cout<<"AForm assignation operator called"<<std::endl;
 	if (this != &equal)
 	{
         this->m_signed = equal.isSigned();

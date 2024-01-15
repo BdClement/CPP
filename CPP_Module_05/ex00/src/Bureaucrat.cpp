@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:30:45 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/08 19:56:44 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:08:38 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void Bureaucrat::decrementGrade()
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(std::string sentence) throw() : m_sentence(sentence)
 {
-	std::cout<<"GradeTooHighExcepetion constructor called"<<std::endl;
+	// std::cout<<"GradeTooHighExcepetion constructor called"<<std::endl;
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()
@@ -95,12 +95,12 @@ const char*	Bureaucrat::GradeTooHighException::what() const throw()
 Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
 {
 	// (void);
-	std::cout<<"GradeTooHighExcepetion destructor called"<<std::endl;
+	// std::cout<<"GradeTooHighExcepetion destructor called"<<std::endl;
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(std::string sentence) throw() : m_sentence(sentence)
 {
-	std::cout<<"GradeTooLowExcepetion constructor called"<<std::endl;
+	// std::cout<<"GradeTooLowExcepetion constructor called"<<std::endl;
 }
 
 const char*	Bureaucrat::GradeTooLowException::what() const throw()
@@ -110,7 +110,7 @@ const char*	Bureaucrat::GradeTooLowException::what() const throw()
 
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
 {
-	std::cout<<"GradeTooLowExcepetion destructor called"<<std::endl;
+	// std::cout<<"GradeTooLowExcepetion destructor called"<<std::endl;
 }
 
 int	valid_grade(int grade)

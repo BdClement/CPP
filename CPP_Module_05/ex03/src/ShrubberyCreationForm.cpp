@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:47:27 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/15 19:45:33 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:49:37 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("shrubbery creation", 145, 137), m_target(target)
 {
-	std::cout<<"ShrubberyCreationForm "<<this->getName()<<" default constructor called"<<std::endl;
+	// std::cout<<"ShrubberyCreationForm "<<this->getName()<<" default constructor called"<<std::endl;
 }
 
 // A TESTER ??
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& asign)
 	: AForm(asign.getName(), asign.getGradeToSign(), asign.getGradeToExecute()), m_target(asign.getTarget())
 {
-	std::cout<<"ShrubberyCreationForm copy constructor called"<<std::endl;
+	// std::cout<<"ShrubberyCreationForm copy constructor called"<<std::endl;
 	// *this = asign;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout<<"ShrubberyCreationForm destructor called"<<std::endl;
+	// std::cout<<"ShrubberyCreationForm destructor called"<<std::endl;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm const & equal)
 {
-	std::cout<<"ShrubberyCreationForm assignation operator called"<<std::endl;
+	// std::cout<<"ShrubberyCreationForm assignation operator called"<<std::endl;
 	if (this != &equal)
 	{
         this->changeSignature(equal.isSigned());

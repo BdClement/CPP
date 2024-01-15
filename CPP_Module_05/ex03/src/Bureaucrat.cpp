@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:30:45 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/15 17:28:43 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:50:00 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : m_grade((valid_grade(grade))), m_name(name)
 {
-		std::cout<<"Bureaucrat "<<name<<" default constructor called"<<std::endl;
+		// std::cout<<"Bureaucrat "<<name<<" default constructor called"<<std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const& asign) : m_grade(asign.getGrade()), m_name(asign.getName())
 {
-	std::cout<<"Bureaucrat copy constructor called"<<std::endl;
+	// std::cout<<"Bureaucrat copy constructor called"<<std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout<<"Bureaucrat destructor called"<<std::endl;
+	// std::cout<<"Bureaucrat destructor called"<<std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & equal)
 {
-	std::cout<<"Bureaucrat assignation operator called"<<std::endl;
+	// std::cout<<"Bureaucrat assignation operator called"<<std::endl;
 	if (this != &equal)
 	{
 		this->m_grade = equal.getGrade();

@@ -17,6 +17,9 @@ SRC_DIR = 		./src
 SRCS =			$(SRC_DIR)/main.cpp\
 				$(SRC_DIR)/Bureaucrat.cpp\
 				$(SRC_DIR)/AForm.cpp\
+				$(SRC_DIR)/PresidentialPardonForm.cpp\
+				$(SRC_DIR)/RobotomyRequestForm.cpp\
+				$(SRC_DIR)/ShrubberyCreationForm.cpp\
 
 ## OBJECTS
 
@@ -30,6 +33,9 @@ HDIR = 			./inc
 
 HD = 			$(HDIR)/Bureaucrat.hpp\
 				$(HDIR)/AForm.hpp\
+				$(HDIR)/PresidentialPardonForm.hpp\
+				$(HDIR)/RobotomyRequestForm.hpp\
+				$(HDIR)/ShrubberyCreationForm.hpp\
 
 INC_HD =		-I $(HDIR)
 

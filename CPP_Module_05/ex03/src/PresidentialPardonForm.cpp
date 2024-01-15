@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 12:12:43 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/15 19:45:59 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:49:00 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("presidential pardon", 25, 5), m_target(target)
 {
-	std::cout<<"PresidentialPardonForm "<<this->getName()<<" default constructor called"<<std::endl;
+	// std::cout<<"PresidentialPardonForm "<<this->getName()<<" default constructor called"<<std::endl;
 }
 
 // A TESTER ??
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const& asign)
 	: AForm(asign.getName(), asign.getGradeToSign(), asign.getGradeToExecute()), m_target(asign.getTarget())
 {
-	std::cout<<"PresidentialPardonForm copy constructor called"<<std::endl;
+	// std::cout<<"PresidentialPardonForm copy constructor called"<<std::endl;
 	// *this = asign;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-	std::cout<<"PresidentialPardonForm destructor called"<<std::endl;
+	// std::cout<<"PresidentialPardonForm destructor called"<<std::endl;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm const & equal)
 {
-	std::cout<<"PresidentialPardonForm assignation operator called"<<std::endl;
+	// std::cout<<"PresidentialPardonForm assignation operator called"<<std::endl;
 	if (this != &equal)
 	{
         this->changeSignature(equal.isSigned());
