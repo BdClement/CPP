@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:25:44 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/16 19:52:26 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:19:05 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ class ScalarConverter
 	ScalarConverter();
 	ScalarConverter(ScalarConverter const& asign);
 	ScalarConverter & operator=(ScalarConverter const& equal);
-
 };
-
-bool	isChar(std::string to_convert);
-bool	isInt(std::string to_convert);
-bool	isFloat(std::string to_convert);
-bool	isDouble(std::string to_convert);
 
 #endif

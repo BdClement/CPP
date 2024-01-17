@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 18:43:10 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/16 19:53:40 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:15:25 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,18 @@ class ConversionHelper
 	std::string	getDoubleError() const;
 
 	ConversionHelper & operator=(ConversionHelper const& equal);
-
+	// Check
+	bool	isChar(std::string to_convert);
+	bool	isInt(std::string to_convert);
+	bool	isFloat(std::string to_convert);
+	bool	isDouble(std::string to_convert);
+	// Conversion
 	void	charConversion(std::string to_convert);
-	void	intConversion(std::string to_convert);
-	void	floatConversion(std::string to_convert);
-	void	doubleConversion(std::string to_convert);
+	void	intConversion();
+	void	floatConversion();
+	void	doubleConversion();
 	void	unknownConversion();
+	// Display
 	void	display() const;
 	void	displayCharConversion() const;
 	void	displayIntConversion() const;
@@ -57,4 +63,5 @@ class ConversionHelper
 	std::string	m_float_error;
 	std::string	m_double_error;
 };
+
 #endif
