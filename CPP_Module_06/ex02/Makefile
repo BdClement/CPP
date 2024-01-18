@@ -16,9 +16,9 @@ SRC_DIR = 		./src
 
 SRCS =			$(SRC_DIR)/main.cpp\
 				$(SRC_DIR)/Base.cpp\
-				$(SRC_DIR)/A.cpp\
-				$(SRC_DIR)/B.cpp\
-				$(SRC_DIR)/C.cpp\
+				# $(SRC_DIR)/A.cpp\
+				# $(SRC_DIR)/B.cpp\
+				# $(SRC_DIR)/C.cpp\
 
 ## OBJECTS
 
@@ -31,9 +31,9 @@ OBJS = 			$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 HDIR = 			./inc
 
 HD = 			$(HDIR)/Base.hpp\
-				$(HDIR)/A.hpp\
-				$(HDIR)/B.hpp\
-				$(HDIR)/C.hpp\
+				# $(HDIR)/A.hpp\
+				# $(HDIR)/B.hpp\
+				# $(HDIR)/C.hpp\
 
 
 INC_HD =		-I $(HDIR)

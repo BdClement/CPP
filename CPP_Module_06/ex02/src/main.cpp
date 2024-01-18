@@ -3,38 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:54:25 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/17 19:55:54 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:54:30 by Enfoirax         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#include "Base.hpp"
 #include <string>
 #include <iostream>
 
 int	main()
 {
-	Data	test;
-	test.a = 5;
-	test.b = 'b';
-	test.c = "This is a test";
-	Data*	testDataPtr = Serializer::deserialize(Serializer::serialize(&test));
-	std::cout<<"adresse de base : "<<&test<<std::endl;
-	std::cout<<"deserialize return : "<<testDataPtr<<"\n"<<std::endl;
+	// Test de la fonction generate
+	Base	*test1 = generate();
+	Base	*test2 = generate();
+	Base	*test3 = generate();
+	// (void)test1;
+	// (void)test2;
+	// (void)test3;
 
-	std::cout<<"Test des valeurs pointees par le pointeur retourne par deserialize"<<std::endl;
-	std::cout<< "DataPtr's int = "<<testDataPtr->a<<std::endl;
-	std::cout<< "DataPtr's char = "<<testDataPtr->b<<std::endl;
-	std::cout<< "DataPtr's std::string = "<<testDataPtr->c<<"\n"<<std::endl;
+	// Test de la fonction identify avec pointeur 
+	// std::cout<<"test1 est un objet de type : ";
+	identify(test1);
+	// std::cout<<"\ntest2 est un objet de type : ";
+	identify(test2);
+	// std::cout<<"\ntest3 est un objet de type : ";
+	identify(test3);
 
-	std::cout<<"\nModification des valeurs de la structure"<<std::endl;
-	testDataPtr->a++;
-	testDataPtr->b++;
-	test.c += ".. it seems to be good";
-	std::cout<< "DataPtr's newValue int = "<<testDataPtr->a<<std::endl;
-	std::cout<< "DataPtr's newValue char = "<<testDataPtr->b<<std::endl;
-	std::cout<< "DataPtr's newValue std::string = "<<testDataPtr->c<<std::endl;
+	// Test de la fonction identify avec adresse
+	// std::cout<<"test1 est un objet de type : ";
+	identify(&(*test1));
+	// std::cout<<"\ntest2 est un objet de type : ";
+	identify(&(*test2));
+	// std::cout<<"\ntest3 est un objet de type : ";
+	identify(&(*test3));
+
+	delete test1;
+	delete test2;
+	delete test3;
 	return 0;
 }
