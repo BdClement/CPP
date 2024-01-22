@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:26:20 by Enfoirax          #+#    #+#             */
-/*   Updated: 2024/01/18 19:52:39 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:07:17 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@ Base::~Base(){}
 
 Base * generate(void)
 {
-// It randomly instanciates A, B or C and returns the instance as a Base pointer. 
-// Feel free to use anything you like for the random choice implementation. 
     // Initialisation du générateur de nombres aléatoires
     std::srand(static_cast<unsigned>(std::time(0)));
     // Génération d'un nombre aléatoire entre 0 et 2 inclus
     int randomValue = std::rand() % 3;
     // Actions possibles
-    switch (randomValue) 
+    switch (randomValue)
     {
         case 0:
         {
@@ -47,7 +45,6 @@ Base * generate(void)
             return cBasePtr;
         }
     }
-    std::cout<<"Probleme Generate ma gl"<<std::endl;
     return NULL;
 }
 
@@ -69,7 +66,7 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
-// It prints the actual type of the object pointed to by p: "A", "B" or "C". 
+// It prints the actual type of the object pointed to by p: "A", "B" or "C".
 // Using a pointer inside this function is forbidden.
     try
     {
@@ -94,5 +91,5 @@ void identify(Base& p)
         std::cout<<"C"<<std::endl;
     }
     catch(const std::exception& e)
-    {} 
+    {}
 }

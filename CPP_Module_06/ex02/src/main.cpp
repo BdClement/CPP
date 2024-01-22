@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:54:25 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/18 19:54:30 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:06:50 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,22 @@ int	main()
 	Base	*test1 = generate();
 	Base	*test2 = generate();
 	Base	*test3 = generate();
-	// (void)test1;
-	// (void)test2;
-	// (void)test3;
 
-	// Test de la fonction identify avec pointeur 
-	// std::cout<<"test1 est un objet de type : ";
+
+	// Test de la fonction identify avec pointeur
+	std::cout<<"test1 est un objet de type : ";
 	identify(test1);
-	// std::cout<<"\ntest2 est un objet de type : ";
+	std::cout<<"test2 est un objet de type : ";
 	identify(test2);
-	// std::cout<<"\ntest3 est un objet de type : ";
+	std::cout<<"test3 est un objet de type : ";
 	identify(test3);
 
 	// Test de la fonction identify avec adresse
-	// std::cout<<"test1 est un objet de type : ";
+	std::cout<<"\ntest1 est un objet de type : ";
 	identify(&(*test1));
-	// std::cout<<"\ntest2 est un objet de type : ";
+	std::cout<<"test2 est un objet de type : ";
 	identify(&(*test2));
-	// std::cout<<"\ntest3 est un objet de type : ";
+	std::cout<<"test3 est un objet de type : ";
 	identify(&(*test3));
 
 	delete test1;

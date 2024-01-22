@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:57:57 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/09 18:42:23 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:55:39 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main()
 		std::cout<<form3<<"\n"<<std::endl;
 		std::cout<<form4<<"\n"<<std::endl;
 		std::cout<<form5<<"\n"<<std::endl<<std::endl;
+		
 		std::cout<<"TEST DE signForm()"<<std::endl;
 		std::cout<<"Jaques grade 25 tente de signer form3 qui necessite au moins un grade 25"<<std::endl;
 		Jaques.signForm(form3);

@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:30:45 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/15 20:08:38 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:43:32 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	valid_grade(int grade)
 {
 	if (grade < 1)
 			throw Bureaucrat::GradeTooHighException("ERROR : The grade is too high.");
-		else if (grade > 150)
-			throw Bureaucrat::GradeTooLowException("ERROR : The grade is too low.");
-		return grade;
+	else if (grade > 150)
+		throw Bureaucrat::GradeTooLowException("ERROR : The grade is too low.");
+	return grade;
 }

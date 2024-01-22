@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:21:51 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/08 18:58:56 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:44:11 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ class Bureaucrat
 	~Bureaucrat();
 
 	Bureaucrat & operator=(Bureaucrat const& equal);
+	
 	std::string	getName() const;
 	int			getGrade() const;
 	void		incrementGrade();
