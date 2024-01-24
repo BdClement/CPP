@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:54:04 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/22 19:57:09 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:20:51 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main()
 	// {
 	// 	std::cerr << "Erreur d'indexation hors limites : " << e.what() << std::endl;
 	// }
+	Array<std::string>	test;
 	Array<std::string>	test1;
 	Array<std::string>	test2(50);
 	Array<std::string>	test3(test2);
@@ -35,7 +36,8 @@ int	main()
 		std::cout<<"\n\n"<<test1[3]<<std::endl;
 		std::cout<<test3[3]<<std::endl;
 		std::cout<<test2[7]<<std::endl;
-		std::cout<<test2[-8]<<"\n\n"<<std::endl;
+		std::cout<<test[7]<<std::endl;
+		// std::cout<<test2[-8]<<"\n\n"<<std::endl;
 	}
 	catch (const std::exception& e)
 	{

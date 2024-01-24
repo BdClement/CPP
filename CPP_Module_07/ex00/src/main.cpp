@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:18:31 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/22 16:27:55 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/23 11:16:22 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ int main( void )
 	::swap(e, f);
 	std::cout << "e = " << e << ", f = " << f << std::endl;
 	std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
-	std::cout << "max( e, f ) = " << ::max( e, f ) << std::endl;
+	std::cout << "max( e, f ) = " << ::max( e, f )  << "\n\n" << std::endl;
+
+	std::string	g = "Hello";
+	std::string	h = "World";
+	::swap(g, h);
+	std::cout << "g = " << g << ", h = " << h << std::endl;
+	std::cout << "min( g, h ) = " << ::min( g, h ) << std::endl;
+	std::cout << "max( g, h ) = " << ::max( g, h ) << std::endl;
 	return 0;
 }
