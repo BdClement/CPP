@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:45:45 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/24 20:01:00 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:17:51 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ class Span
 
 	Span & operator=(Span const& equal);
 
-	// void	print() const;
+	void	print() const;
 
 	void	addNumber(int to_add);
-	// void	addNumbers(std::)
+	void	addNumbers(std::deque<int>::iterator start, std::deque<int>::iterator end);
 	unsigned int	shortestSpan();
 	unsigned int	longestSpan();
 	// void			findShortestSpan(int to_compare);
@@ -40,6 +40,6 @@ class Span
 	int					m_shortest_span;
 };
 
-// void	print_Data(int to_print);
+void	print_Data(int to_print);
 
 #endif

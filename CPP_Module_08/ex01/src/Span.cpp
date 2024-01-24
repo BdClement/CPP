@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:55:00 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/24 19:40:38 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/24 20:23:29 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,21 @@ void	Span::addNumber(int to_add)
 	}
 }
 
+void	Span::addNumbers(std::deque<int>::iterator start, std::deque<int>::iterator end)
+{
+	try
+	{
+		std::cout<<end-start<<std::endl;
+		if (m_stock_max < m_content.size() + (end - start))
+			throw std::exception();
+		m_content.insert(m_content.end(), start, end);
+	}
+		catch (const std::exception& e)// tester sans le e ?
+	{
+		std::cout<<"Exception catched : The container is full"<<std::endl;
+	}
+}
+
 // void	Span::findShortestSpan(int	to_compare)
 // {
 // 	static int	span = 0, previous = 0, count = 0;;
@@ -76,16 +91,16 @@ unsigned int	Span::shortestSpan()
 	return shortest;
 }
 
-// //// TEST
-// void	print_Data(int to_print)
-// {
-// 	std::cout<<to_print<<' ';
-// }
-// //// TEST
-// void	Span::print() const
-// {
-// 	for_each(m_content.begin(), m_content.end(), print_Data);
-// }
+//// TEST
+void	print_Data(int to_print)
+{
+	std::cout<<to_print<<' ';
+}
+//// TEST
+void	Span::print() const
+{
+	for_each(m_content.begin(), m_content.end(), print_Data);
+}
 
 unsigned int	Span::longestSpan()
 {
