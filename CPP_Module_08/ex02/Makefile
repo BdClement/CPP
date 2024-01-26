@@ -27,8 +27,8 @@ OBJS = 			$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 HDIR = 			./inc
 
-HD = 			$(HDIR)/iter.hpp\
-
+HD = 			$(HDIR)/MutantStack.hpp\
+				$(HDIR)/MutantStack.tpp\
 
 INC_HD =		-I $(HDIR)
 

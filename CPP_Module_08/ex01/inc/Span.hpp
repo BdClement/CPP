@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:45:45 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/24 20:17:51 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/26 13:40:37 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,18 @@ class Span
 
 	void	addNumber(int to_add);
 	void	addNumbers(std::deque<int>::iterator start, std::deque<int>::iterator end);
+
 	unsigned int	shortestSpan();
 	unsigned int	longestSpan();
-	// void			findShortestSpan(int to_compare);
+
+	std::deque<int>::iterator	getBegin();
+	std::deque<int>::iterator	getEnd();
 
 	private:
 	unsigned int		m_stock_max;
 	std::deque<int>		m_content;
-	int					m_shortest_span;
 };
 
-void	print_Data(int to_print);
+void	print_span_element(int to_print);
 
 #endif

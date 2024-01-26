@@ -6,17 +6,16 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:55:00 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/24 20:23:29 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/26 13:40:24 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <climits>
 
 Span::Span(unsigned int N) : m_stock_max(N){}
-Span::Span(Span const& asign) : m_stock_max(asign.m_stock_max), m_shortest_span(asign.m_shortest_span)
+Span::Span(Span const& asign) : m_stock_max(asign.m_stock_max)
 {
-	m_content.assign(asign.m_content.begin(), asign.m_content.end());// A tester
+	m_content.assign(asign.m_content.begin(), asign.m_content.end());
 }
 Span::~Span(){}
 Span& Span::operator=(Span const & equal)
@@ -24,7 +23,6 @@ Span& Span::operator=(Span const & equal)
 	if (this != &equal)
 	{
 		m_stock_max = equal.m_stock_max;
-		m_shortest_span = equal.m_shortest_span;
 		m_content.clear();
 		m_content.assign(equal.m_content.begin(), equal.m_content.end());
 		// Copy peut etre utilise
@@ -40,7 +38,7 @@ void	Span::addNumber(int to_add)
 			throw std::exception();
 		m_content.push_front(to_add);
 	}
-	catch (const std::exception& e)// tester sans le e ?
+	catch (const std::exception&)
 	{
 		std::cout<<"Exception catched : The container is full"<<std::endl;
 	}
@@ -50,29 +48,15 @@ void	Span::addNumbers(std::deque<int>::iterator start, std::deque<int>::iterator
 {
 	try
 	{
-		std::cout<<end-start<<std::endl;
 		if (m_stock_max < m_content.size() + (end - start))
 			throw std::exception();
 		m_content.insert(m_content.end(), start, end);
 	}
-		catch (const std::exception& e)// tester sans le e ?
+		catch (const std::exception&)
 	{
 		std::cout<<"Exception catched : The container is full"<<std::endl;
 	}
 }
-
-// void	Span::findShortestSpan(int	to_compare)
-// {
-// 	static int	span = 0, previous = 0, count = 0;;
-// 	if (count != 0)
-// 	{
-// 		span = to_compare - previous;
-// 		m_shortest_span =
-// 	}
-// 	previous = to_compare;
-// 	count++;
-
-// }
 
 unsigned int	Span::shortestSpan()
 {
@@ -91,17 +75,6 @@ unsigned int	Span::shortestSpan()
 	return shortest;
 }
 
-//// TEST
-void	print_Data(int to_print)
-{
-	std::cout<<to_print<<' ';
-}
-//// TEST
-void	Span::print() const
-{
-	for_each(m_content.begin(), m_content.end(), print_Data);
-}
-
 unsigned int	Span::longestSpan()
 {
 	if (m_content.size() < 2)
@@ -110,3 +83,22 @@ unsigned int	Span::longestSpan()
 	return (*(m_content.end() - 1) - *(m_content.begin()));
 }
 
+std::deque<int>::iterator	Span::getBegin()
+{
+	return m_content.begin();
+}
+
+std::deque<int>::iterator	Span::getEnd()
+{
+	return m_content.end();
+}
+
+void	print_span_elem(int to_print)
+{
+	std::cout<<to_print<<' ';
+}
+
+void	Span::print() const
+{
+	for_each(m_content.begin(), m_content.end(), print_span_elem);
+}
