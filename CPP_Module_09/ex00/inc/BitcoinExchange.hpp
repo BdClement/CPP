@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:12:51 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/30 14:34:06 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:51:40 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #define __BITCOINEXCHANGE__HPP
 
 #include <string>
+#include <iostream>
+#include <map>
+#include <fstream>
+#include <cstdlib>
+// #include <stdlib.h>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
 
 class BitcoinExchange
 {
@@ -24,9 +32,15 @@ class BitcoinExchange
 
 	BitcoinExchange & operator=(BitcoinExchange const& equal);
 
-	private:
-	std::map<std::string, double>	m_exchange;
+	void	fill_map();
+	void	display_map() const;
+	void	run_exchange(std::string line);
+	// bool	check_format(std::string line);
+	void	clean_string(std::string &line);
+	bool	check_date(std::string date);
 
+	std::map<std::string, double>		m_data_base;
+	private:
 };
 
 #endif
