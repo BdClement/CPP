@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:58:49 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/29 17:26:21 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/29 20:09:20 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,42 @@
 
 int	main()
 {
+	// {
+	// 	MutantStack<int> mstack;
+	// 	mstack.push(5);
+	// 	mstack.push(17);
+	// 	mstack.push(20);
+	// 	// MutantStack<int> mstack2;
+	// 	// mstack2 = mstack
+	// 	MutantStack<int> mstack3(mstack);
+	// 	mstack.pop();
+	// 	mstack.pop();
+	// 	// mstack2.pop();
+	// 	MutantStack<int>::iterator it = mstack.begin();
+	// 	MutantStack<int>::iterator ite = mstack.end();
+	// 	std::cout<<"mstack"<<std::endl;
+	// 	while (it != ite)
+	// 	{
+	// 		std::cout << *it << std::endl;
+	// 		++it;
+	// 	}
+	// 	// MutantStack<int>::iterator it1 = mstack2.begin();
+	// 	// MutantStack<int>::iterator ite1 = mstack2.end();
+	// 	// std::cout<<"mstack2"<<std::endl;
+	// 	// while (it1 != ite1)
+	// 	// {
+	// 	// 	std::cout << *it1 << std::endl;
+	// 	// 	++it1;
+	// 	// }
+	// 	MutantStack<int>::iterator it2 = mstack3.begin();
+	// 	MutantStack<int>::iterator ite2 = mstack3.end();
+	// 	std::cout<<"mstack3"<<std::endl;
+	// 	while (it2 != ite2)
+	// 	{
+	// 		std::cout << *it2 << std::endl;
+	// 		++it2;
+	// 	}
+	// }
 	{
 		std::cout<<"********* Test de la forme canonique de MutantStack *********"<<std::endl;
 		MutantStack<int> mstack;
