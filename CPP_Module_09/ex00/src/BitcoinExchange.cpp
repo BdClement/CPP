@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:34:45 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/30 20:01:40 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:30:15 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ void	BitcoinExchange::fill_map()
 			std::size_t	pos = line.find(",");
 			std::string date = line.substr(0, pos);
 			std::string	price_str = line.substr(pos + 1);
-			double price = std::strtod(price_str.c_str(), NULL);// Perte de precision : obligatoire ?
+			double price = std::strtod(price_str.c_str(), NULL);
 			m_data_base.insert(std::pair<std::string, double>(date, price));
-			// std::cout<<date<<"||||"<<price<<"|||||||||||"<<price2<<std::endl;
 		}
 		ifs.close();
 	}
@@ -65,36 +64,71 @@ void	BitcoinExchange::fill_map()
 	}
 }
 
-void	BitcoinExchange::display_map() const
-{
-	std::map<std::string, double>::const_iterator it;
-	for(it = m_data_base.begin(); it != m_data_base.end(); ++it)
-	{
-		std::cout<<it->first<<"||";
-		std::cout << std::fixed;
-		std::cout.precision(2);
-		std::cout<<it->second<<std::endl;
-	}
-}
-
 void	BitcoinExchange::run_exchange(std::string line)
 {
-	// Parsing
-	// Message d'erreur ou resultat
-	if (line.find("|") == std::string::npos) // FFonction ?
+	// Check pipe
+	if (line.find("|") == std::string::npos)
 	{
-		std::cout<<"bad input => "<<line<<std::endl;
+		std::cout<<"Error : bad input => "<<line<<std::endl;
 		return ;
 	}
+	// Split date and value and clean strings from space
 	std::size_t	pos = line.find("|");
 	std::string date = line.substr(0, pos);
 	std::string	value = line.substr(pos + 1);
 	this->clean_string(date);
 	this->clean_string(value);
-	std::cout<<date<<"|"<<value<<std::endl;
-	this->check_date(date);
-	// check date
-	// check nombre
+	// Check date and value format
+	if (!this->check_date(date) || !check_value(value))
+		return ;
+	// Result
+	this->calcul_result(date, value);
+}
+
+void	BitcoinExchange::calcul_result(std::string date, std::string value)
+{
+	double	value_double = std::strtod(value.c_str(), NULL);
+	std::map<std::string, double>::iterator it = m_data_base.find(date);
+	if (it != m_data_base.end())
+		std::cout<<date<<" => "<<value<<" = "<<value_double * it->second<<std::endl;
+	else
+	{
+		std::map<std::string, double>::const_iterator it2 = m_data_base.begin();
+		if (it2->first > date)
+		{
+			std::cout<<"Bitcoin wasn't born at this period"<<std::endl;
+			return ;
+		}
+		while (it2 != m_data_base.end() && it2->first < date)
+			++it2;
+		--it2;
+		std::cout<<date<<" => "<<value<<" = ";
+		std::cout << std::fixed;
+		std::cout.precision(2);
+		std::cout<<value_double * it2->second<<std::endl;
+	}
+}
+
+bool	BitcoinExchange::check_value(std::string value)
+{
+	char	*end;
+	double	value_double = std::strtod(value.c_str(), &end);
+	if (*end != '\0' )
+	{
+		std::cout<<"Error : bad value format => "<<value<<std::endl;
+		return false;
+	}
+	else if (value_double < 0)
+	{
+		std::cout<<"Error : not a positive number."<<std::endl;
+		return false;
+	}
+	else if (value_double > 1000)
+	{
+		std::cout<<"Error : too large number."<<std::endl;
+		return false;
+	}
+	return true;
 }
 
 bool	BitcoinExchange::check_date(std::string date)
@@ -104,15 +138,19 @@ bool	BitcoinExchange::check_date(std::string date)
 		std::cout<<"Error : bad date format => "<<date<<std::endl;
 		return false;
 	}
-    // Convertir les parties de la date en entiers
-    int year = atoi(date.substr(0, 4).c_str());
-    int month = atoi(date.substr(5, 2).c_str());
-    int day = atoi(date.substr(8, 2).c_str());
-
-    // Vérifier les valeurs converties
+    // Split each part and convert them in long int
+	char *endptr_year, *endptr_month, *endptr_day;
+	long int year = strtol(date.substr(0, 4).c_str(), &endptr_year, 10);
+	long int month = strtol(date.substr(5, 2).c_str(), &endptr_month, 10);
+	long int day = strtol(date.substr(8, 2).c_str(), &endptr_day, 10);
+	if (*endptr_year != '\0' || *endptr_month != '\0' || *endptr_day != '\0')
+	{
+		std::cout<<"Error : bad date format => "<<date<<std::endl;
+		return false;
+	}
 	if (!(year > 0 && month >= 1 && month <= 12 && day >= 1 && day <= 31))
 		std::cout<<"Error : bad date format => "<<date<<std::endl;
-    return (year > 0 && month >= 1 && month <= 12 && day >= 1 && day <= 31);// CHECK v dans test.txt
+    return (year > 0 && month >= 1 && month <= 12 && day >= 1 && day <= 31);
 }
 
 void	BitcoinExchange::clean_string(std::string &line)
@@ -140,21 +178,15 @@ void	BitcoinExchange::clean_string(std::string &line)
 	line = result;
 }
 
-
-// bool	BitcoinExchange::check_format(std::string line)
+// Fonction Test
+// void	BitcoinExchange::display_map() const
 // {
-// 	if (line.find("|") == std::string::npos)
+// 	std::map<std::string, double>::const_iterator it;
+// 	for(it = m_data_base.begin(); it != m_data_base.end(); ++it)
 // 	{
-// 		std::cout<<"bad input => "<<line<<std::endl;
-// 		return false;
+// 		std::cout<<it->first<<"||";
+// 		std::cout << std::fixed;
+// 		std::cout.precision(2);
+// 		std::cout<<it->second<<std::endl;
 // 	}
-// 	try
-// 	{
-// 	}
-// 	catch (const std::exception& e)
-// 	{
-// 		std::cout<<e.what()<<std::endl;
-// 		return false;
-// 	}
-// 	return true;
 // }

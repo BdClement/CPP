@@ -1,6 +1,6 @@
 ## MAIN VARIABLES
 
-NAME =			a.out
+NAME =			btc
 
 CC = 			c++
 

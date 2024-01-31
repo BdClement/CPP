@@ -1,6 +1,6 @@
 ## MAIN VARIABLES
 
-NAME =			a.out
+NAME =			RPN
 
 CC = 			c++
 
@@ -15,7 +15,7 @@ RM_RF =			rm -rf
 SRC_DIR = 		./src
 
 SRCS =			$(SRC_DIR)/main.cpp\
-
+				$(SRC_DIR)/RPN.cpp\
 
 ## OBJECTS
 
@@ -27,8 +27,7 @@ OBJS = 			$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 HDIR = 			./inc
 
-HD = 			$(HDIR)/MutantStack.hpp\
-				$(HDIR)/MutantStack.tpp\
+HD = 			$(HDIR)/RPN.hpp\
 
 INC_HD =		-I $(HDIR)
 

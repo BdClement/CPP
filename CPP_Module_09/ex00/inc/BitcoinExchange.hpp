@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:12:51 by clbernar          #+#    #+#             */
-/*   Updated: 2024/01/30 19:51:40 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:27:23 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ class BitcoinExchange
 	BitcoinExchange & operator=(BitcoinExchange const& equal);
 
 	void	fill_map();
-	void	display_map() const;
+	// void	display_map() const;
 	void	run_exchange(std::string line);
-	// bool	check_format(std::string line);
 	void	clean_string(std::string &line);
 	bool	check_date(std::string date);
+	bool	check_value(std::string value);
+	void	calcul_result(std::string date, std::string value);
 
 	std::map<std::string, double>		m_data_base;
 	private:
