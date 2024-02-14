@@ -29,6 +29,8 @@ OBJS = 			$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 HDIR = 			./inc
 
 HD = 			$(HDIR)/PmergeMe.hpp\
+				$(HDIR)/GroupIterator.hpp\
+				$(HDIR)/GroupIterator.tpp\
 
 INC_HD =		-I $(HDIR)
 
