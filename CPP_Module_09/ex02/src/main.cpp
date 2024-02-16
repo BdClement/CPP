@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 19:14:21 by clbernar          #+#    #+#             */
-/*   Updated: 2024/02/14 18:50:54 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/02/16 22:47:53 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@ int	main(int argc, char **argv)
 		GroupIterator<std::vector<int>::iterator> begin(test.get_data().begin(), 1);
 		GroupIterator<std::vector<int>::iterator> end(test.get_data().end() - 1, 1); // end - 1?
 		if (test.get_data().size() > 1)
-			test.vector_ford_johnson(begin, end);
+		{
+			std::vector<v_element> result = test.vector_ford_johnson(begin, end);
+			std::cout<<"Result : "<<std::endl;
+			for (size_t i = 0; i < result.size(); i++)
+				std::cout<<*result[i]<<std::endl;
+			// test.print_group(result.begin(), result.end());
+		}
 		// std::cout<<"Begin = "<<*begin<<std::endl;
 	}
 	catch (const std::exception &e)

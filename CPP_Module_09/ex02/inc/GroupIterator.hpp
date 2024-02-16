@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:47:47 by clbernar          #+#    #+#             */
-/*   Updated: 2024/02/14 16:23:46 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:56:15 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ template<typename Iterator>
 class GroupIterator
 {
 	public:
-	typedef typename std::iterator_traits<Iterator>::reference reference;
+
+    typedef typename std::iterator_traits<Iterator>::reference reference;
 
 	GroupIterator();
 	GroupIterator(Iterator it, size_t size);
@@ -49,6 +50,7 @@ class GroupIterator
 
 	// Make pair
 	void	make_pair();
+	void	unmake_pair();
 
 
 	private:
