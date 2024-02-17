@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GroupIterator.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:47:47 by clbernar          #+#    #+#             */
-/*   Updated: 2024/02/16 18:56:15 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/02/17 02:33:06 by Enfoirax         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class GroupIterator
 	reference operator*();
 	// Increment
 	GroupIterator& operator++();
+	GroupIterator& operator+(int to_add);
 	GroupIterator operator++(int);
 	GroupIterator& operator--();
 	GroupIterator operator--(int);
