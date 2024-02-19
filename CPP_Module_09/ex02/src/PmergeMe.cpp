@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 19:21:19 by clbernar          #+#    #+#             */
-/*   Updated: 2024/02/16 23:30:54 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:59:50 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,16 +132,13 @@ std::vector<v_element >	PmergeMe::vector_ford_johnson(v_element& begin, v_elemen
 	std::vector<v_element> tmp;
 	// RECURSIVITE
 	tmp = vector_ford_johnson(new_begin, new_end);
-	// std::cout<<"Etat de la liste = ";
-	// this->print_group(begin, end);// TEST
-	// std::cout<<"\n"<<std::endl;
+	std::cout<<"Etat de la liste = ";
+	this->print_group(begin, end);// TEST
+	std::cout<<"\n"<<std::endl;
 	// std::vector<GroupIterator<std::vector<int>::iterator> > ret =
 
 	// TRI DE LA SEQUENCE RETOURNE
 	return this->sort_sequence(tmp);
-	// return ret;
-
-	std::cout<<"\n\n\n"<<std::endl;
 }
 
 
@@ -150,8 +147,13 @@ std::vector<v_element >	PmergeMe::vector_ford_johnson(v_element& begin, v_elemen
 // Suites de Jacobsthal 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691, 87381, 174763, 349525
 std::vector<v_element>	PmergeMe::sort_sequence(std::vector<v_element >& src)
 {
+	std::cout<<"****  NOUVEAU TOUR ****\n\n"<<std::endl;
 	if (src.size() == 0)
 		exit(EXIT_FAILURE);
+	std::cout<<"Contenu de src_chain = ";
+	for (size_t i = 0; i < src.size(); i++)
+		std::cout<<*(src[i])<<" -- ";
+	std::cout<<"\n"<<std::endl;
 	// SPLIT CHAINS
 	std::vector<v_element>	main_chain;
 	std::vector<v_element>	pend_chain;
@@ -170,35 +172,38 @@ std::vector<v_element>	PmergeMe::sort_sequence(std::vector<v_element >& src)
 	// INSERTION
 	for (size_t i = 0; i < pend_chain.size(); i++)
 	{
-		std::cout<<"TEST"<<std::endl;
-		int to_insert = find_next_pend(i + 1);
+		int to_insert = find_next_pend(i + 1); // A revoir
 		if (i == 0)
 		{
 			new_main_chain.insert(new_main_chain.begin(), pend_chain[0]);
-			std::cout<<"TEST 1"<<std::endl;
+			std::cout<<"Insertion du premier"<<std::endl;
 		}
 		else
 		{
-			std::cout<<"TEST 2"<<std::endl;
+			int j = i;
 			if (to_insert > (int)pend_chain.size())
 				to_insert -= to_insert - i;
-			// for (int j = i; j >= -1, j--)
-			int j = i;
 			do {
+
+			std::cout<<"\ni = "<<i<<"  j = "<<j<<"  to insert = "<<to_insert;
+			std::cout<<"\nnew main chain index"<< j<<" = "<<*new_main_chain[j]<<" < pendchain index "<<to_insert<<" = "<<*pend_chain[to_insert];
 				std::cout<<*new_main_chain[j]<<" < "<<*pend_chain[to_insert - 1]<<std::endl;
 				if (*new_main_chain[j] < *pend_chain[to_insert])
 				{
+					std::cout<<" Vrai \n"<<std::endl;
+					new_main_chain.insert(new_main_chain.begin() + (j + 1), pend_chain[to_insert]);
+					std::cout<<*pend_chain[to_insert]<<" vient d'etre inserer"<<std::endl;
 					std::cout<<"TEST 3"<<std::endl;
 					new_main_chain.insert(new_main_chain.begin() + j + 1, pend_chain[to_insert - 1]);
 					std::cout<<*pend_chain[to_insert - 1]<<" vient d'etre inserer"<<std::endl;
 				}
+				else if ( j == 0)
+					new_main_chain.insert(new_main_chain.begin() , pend_chain[to_insert]);
 				j--;
 			} while (j >= 0);
-			// binary_search_insertion(new_main_chain, pend_chain, )
 		}
 	}
 	// Inserer pend dans main
-	std::cout<<"NMC SIZE = "<<new_main_chain.size()<<std::endl;
 	return new_main_chain;
 }
 

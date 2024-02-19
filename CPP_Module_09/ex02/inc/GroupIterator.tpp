@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GroupIterator.tpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:14:02 by clbernar          #+#    #+#             */
-/*   Updated: 2024/02/16 18:52:13 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/02/17 02:34:27 by Enfoirax         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,13 @@ GroupIterator<Iterator> GroupIterator<Iterator>::operator++(int)
 	tmp = *this;
 	operator++();
 	return tmp;
+}
+
+template<typename Iterator>
+GroupIterator<Iterator>& GroupIterator<Iterator>::operator+(int to_add)
+{
+	m_it += to_add;
+	return *this;
 }
 
 template<typename Iterator>
