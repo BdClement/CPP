@@ -6,7 +6,7 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 19:21:19 by clbernar          #+#    #+#             */
-/*   Updated: 2024/02/16 23:15:54 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/02/16 23:30:54 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,12 +185,12 @@ std::vector<v_element>	PmergeMe::sort_sequence(std::vector<v_element >& src)
 			// for (int j = i; j >= -1, j--)
 			int j = i;
 			do {
-
+				std::cout<<*new_main_chain[j]<<" < "<<*pend_chain[to_insert - 1]<<std::endl;
 				if (*new_main_chain[j] < *pend_chain[to_insert])
 				{
 					std::cout<<"TEST 3"<<std::endl;
-					new_main_chain.insert(new_main_chain.begin(), pend_chain[to_insert]);
-					std::cout<<*pend_chain[to_insert]<<" vient d'etre inserer"<<std::endl;
+					new_main_chain.insert(new_main_chain.begin() + j + 1, pend_chain[to_insert - 1]);
+					std::cout<<*pend_chain[to_insert - 1]<<" vient d'etre inserer"<<std::endl;
 				}
 				j--;
 			} while (j >= 0);
