@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GroupIterator.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:47:47 by clbernar          #+#    #+#             */
-/*   Updated: 2024/02/17 02:33:06 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:35:26 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ class GroupIterator
 	bool operator==(const GroupIterator& other) const;
 	bool operator>(const GroupIterator& other) const;
 	bool operator<(const GroupIterator& other) const;
+	bool operator<=(const GroupIterator& other) const;
+	bool operator>=(const GroupIterator& other) const;
 
 	// Getters
 	size_t	get_size() const;
@@ -51,7 +53,7 @@ class GroupIterator
 
 	// Make pair
 	void	make_pair();
-	void	unmake_pair();
+	// void	unmake_pair();
 
 
 	private:

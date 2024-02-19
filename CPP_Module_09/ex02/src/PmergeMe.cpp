@@ -6,13 +6,12 @@
 /*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 19:21:19 by clbernar          #+#    #+#             */
-/*   Updated: 2024/02/19 11:59:50 by clbernar         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:17:18 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-// template<typename Container>
 PmergeMe::PmergeMe(char **arg)
 {
 	// Init les attibuts pour le temps
@@ -24,16 +23,13 @@ PmergeMe::PmergeMe(char **arg)
 	}
 }
 
-// template<typename Container
 PmergeMe::PmergeMe(PmergeMe const& asign)
 {
 	m_data = asign.m_data;
 }
 
-// template<typename Container>
 PmergeMe::~PmergeMe(){}
 
-// template<typename Container>
 PmergeMe& PmergeMe::operator=(PmergeMe const & equal)
 {
 	if (this != &equal)
@@ -44,7 +40,6 @@ PmergeMe& PmergeMe::operator=(PmergeMe const & equal)
 	return *this;
 }
 
-// template<typename Container>
 bool	PmergeMe::is_valid_number(std::string const& str) const
 {
 	if (str.empty() || str[0] == '-')
@@ -62,7 +57,6 @@ bool	PmergeMe::is_valid_number(std::string const& str) const
 	return true;
 }
 
-// template<typename Container>
 int		PmergeMe::atoi_convert(const char *str)const
 {
 	int	int_value = 0;
@@ -122,6 +116,14 @@ std::vector<v_element >	PmergeMe::vector_ford_johnson(v_element& begin, v_elemen
 	new_begin.make_pair();
 	v_element new_end;
 	new_end = end;
+	v_element lost;
+	// Conserve alone element if we have odd sequence
+	if (this->get_size(begin, end) % 2 != 0)
+	{
+		lost = end;
+		std::cout<<"Lost = "<<*lost<<std::endl;
+		new_end--;
+	}
 	if (!(begin.get_size() * 2 > m_data.size()))
 	{
 		new_end--;
@@ -132,34 +134,24 @@ std::vector<v_element >	PmergeMe::vector_ford_johnson(v_element& begin, v_elemen
 	std::vector<v_element> tmp;
 	// RECURSIVITE
 	tmp = vector_ford_johnson(new_begin, new_end);
-	std::cout<<"Etat de la liste = ";
-	this->print_group(begin, end);// TEST
-	std::cout<<"\n"<<std::endl;
-	// std::vector<GroupIterator<std::vector<int>::iterator> > ret =
-
 	// TRI DE LA SEQUENCE RETOURNE
-	return this->sort_sequence(tmp);
+	return this->sort_sequence(tmp, lost);
 }
 
 
 
 
 // Suites de Jacobsthal 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691, 87381, 174763, 349525
-std::vector<v_element>	PmergeMe::sort_sequence(std::vector<v_element >& src)
+std::vector<v_element>	PmergeMe::sort_sequence(std::vector<v_element >& src, v_element& lost)
 {
-	std::cout<<"****  NOUVEAU TOUR ****\n\n"<<std::endl;
+	std::cout<<"****** NOUVEAU TOUR *******\n\n"<<std::endl;
 	if (src.size() == 0)
 		exit(EXIT_FAILURE);
-	std::cout<<"Contenu de src_chain = ";
-	for (size_t i = 0; i < src.size(); i++)
-		std::cout<<*(src[i])<<" -- ";
-	std::cout<<"\n"<<std::endl;
 	// SPLIT CHAINS
 	std::vector<v_element>	main_chain;
 	std::vector<v_element>	pend_chain;
 	split_pairs(src, main_chain, pend_chain);
 	std::vector<v_element> new_main_chain = main_chain;
-	// main_chain.insert(main_chain.begin(), pend_chain[0]);
 	// AFFICHAGE DES CHAINES OBTENUES
 	std::cout<<"Contenu de main_chain = ";
 	for (size_t i = 0; i < main_chain.size(); i++)
@@ -170,41 +162,110 @@ std::vector<v_element>	PmergeMe::sort_sequence(std::vector<v_element >& src)
 		std::cout<<*(pend_chain[i])<<" -- ";
 	std::cout<<std::endl;
 	// INSERTION
-	for (size_t i = 0; i < pend_chain.size(); i++)
+	for (size_t nb_insertion = 0; nb_insertion < pend_chain.size(); nb_insertion++)
 	{
-		int to_insert = find_next_pend(i + 1); // A revoir
-		if (i == 0)
+		int to_insert = find_next_pend((nb_insertion + 1), pend_chain.size());
+		if (nb_insertion == 0)
 		{
-			new_main_chain.insert(new_main_chain.begin(), pend_chain[0]);
+			new_main_chain.insert(new_main_chain.begin(), pend_chain[to_insert]);
 			std::cout<<"Insertion du premier"<<std::endl;
 		}
 		else
 		{
-			int j = i;
-			if (to_insert > (int)pend_chain.size())
-				to_insert -= to_insert - i;
-			do {
-
-			std::cout<<"\ni = "<<i<<"  j = "<<j<<"  to insert = "<<to_insert;
-			std::cout<<"\nnew main chain index"<< j<<" = "<<*new_main_chain[j]<<" < pendchain index "<<to_insert<<" = "<<*pend_chain[to_insert];
-				std::cout<<*new_main_chain[j]<<" < "<<*pend_chain[to_insert - 1]<<std::endl;
-				if (*new_main_chain[j] < *pend_chain[to_insert])
-				{
-					std::cout<<" Vrai \n"<<std::endl;
-					new_main_chain.insert(new_main_chain.begin() + (j + 1), pend_chain[to_insert]);
-					std::cout<<*pend_chain[to_insert]<<" vient d'etre inserer"<<std::endl;
-					std::cout<<"TEST 3"<<std::endl;
-					new_main_chain.insert(new_main_chain.begin() + j + 1, pend_chain[to_insert - 1]);
-					std::cout<<*pend_chain[to_insert - 1]<<" vient d'etre inserer"<<std::endl;
-				}
-				else if ( j == 0)
-					new_main_chain.insert(new_main_chain.begin() , pend_chain[to_insert]);
-				j--;
-			} while (j >= 0);
+			std::cout<<"Tentative d'insertion"<<std::endl;
+			size_t insertion_area = to_insert + nb_insertion;
+			binary_search_and_insert(new_main_chain, insertion_area, pend_chain[to_insert]);
 		}
 	}
 	// Inserer pend dans main
+	if (lost.get_size() != 0)
+	{
+		std::cout<<"Test du segfault"<<std::endl;
+		binary_search_and_insert(new_main_chain, new_main_chain.size(), lost);
+	}
 	return new_main_chain;
+}
+
+void	PmergeMe::binary_search_and_insert(std::vector<v_element>& new_main_chain, size_t insertion_area, v_element& to_insert)
+{
+	size_t	left = 0;
+	size_t	right = insertion_area;
+	size_t	mid = 0;
+	std::cout<<"Test de BINARY SEARCH";
+	// std::cout<<"Contenu de new_main_chain au debut de binary search"<<std::endl;
+	// for (size_t i = 0; i < new_main_chain.size(); i++)
+	// 	std::cout<<"  -- "<<*new_main_chain[i];
+	// std::cout<<std::endl;
+	// std::cout<<"\nElement a inserer = "<<*to_insert<<std::endl;
+	// std::cout<<"Insertion area = "<<insertion_area<<"\n"<<std::endl;
+
+	while (left < right)
+	{
+		if (right == 0)
+			right++;
+		mid = left + (right - left) / 2;
+		std::cout<<"DANS LA BOUCLE  "<<"left = "<<left<<" right = "<<right<<" mid = "<<mid<<std::endl;
+		if (*new_main_chain[mid] == *to_insert)
+		{
+			new_main_chain.insert(new_main_chain.begin() + mid, to_insert);
+			std::cout<<"WESH"<<std::endl;
+			return ;
+		}
+		else if (*new_main_chain[mid] < *to_insert)
+		{
+
+			left = mid + 1;
+			std::cout<<"ALORS"<<std::endl;
+		}
+		else
+		{
+			if (mid == 0)
+				break ;
+			right = mid - 1;
+			std::cout<<"TIE UN GATE"<<std::endl;
+		}
+	}
+	std::cout<<"left = "<<left<<" right = "<<right<<" mid = "<<mid<<std::endl;
+	std::cout<<"Insertion dans un sequence de taille = "<<new_main_chain.size()<<" a l'index (+ 1 potentiel) = "<<left<<std::endl;
+	if (left == new_main_chain.size())
+		left--;
+	// std::cout<<"BIG MAN THING"<<std::endl;
+	if (*new_main_chain[left] < *to_insert)
+	{
+		std::cout<<"DANS LE IF"<<std::endl;
+		if (left < new_main_chain.size())
+			new_main_chain.insert(new_main_chain.begin() + left + 1, to_insert);
+		else
+			new_main_chain.insert(new_main_chain.begin() + left, to_insert);
+	}
+	else
+	{
+		std::cout<<"DANS LE ELSE"<<std::endl;
+		new_main_chain.insert(new_main_chain.begin() + left, to_insert);
+	}
+	// std::cout<<"Contenu de new_main_chain APRES INSERTION binary search"<<std::endl;
+	// 	for (size_t i = 0; i < new_main_chain.size(); i++)
+	// 	std::cout<<"  -- "<<*new_main_chain[i];
+	// std::cout<<"\n"<<std::endl;
+}
+
+// A Modifier
+size_t	PmergeMe::get_insertion_area(v_element& to_find, std::vector<v_element>& new_main_chain)
+{
+	for (size_t i = 0; i < new_main_chain.size(); i++)
+	{
+		if (new_main_chain[i] == to_find)
+			return i;
+	}
+	return 0;
+}
+
+size_t	PmergeMe::get_size(v_element begin, v_element end) const
+{
+	size_t i = 0;
+	while (begin++ < end)
+		i++;
+	return i + 1;
 }
 
 std::vector<int> PmergeMe::jacobsthalSequence(int n)
@@ -227,17 +288,22 @@ std::vector<int> PmergeMe::jacobsthalSequence(int n)
 }
 
 
-size_t	PmergeMe::find_next_pend(size_t index)
+size_t	PmergeMe::find_next_pend(size_t insertion_nb, size_t size_to_insert)
 {
-	if (index == 0) return 0;
-	if (index == 1) return 1;
+	if (insertion_nb == 0 || insertion_nb == 1) return 0;
 	std::vector<int> jacobsthal= jacobsthalSequence(20);
 	int i = 0;
-	while (jacobsthal[i] < (int)index)
+	while (jacobsthal[i] < (int)insertion_nb)
 		i++;
 	int	span = jacobsthal[i] - jacobsthal[i -1];
-	int to_decrement = index + span - jacobsthal[i] -1;
-	return jacobsthal[i] - to_decrement;
+	int to_decrement = insertion_nb + span - jacobsthal[i] -1;
+	size_t	ret = jacobsthal[i] - to_decrement - 1;
+	(void) size_to_insert;
+	if (ret + 1 > size_to_insert)
+	{
+		return  size_to_insert - (insertion_nb - jacobsthal[i - 1]);
+	}
+	return ret;
 }
 
 void	PmergeMe::split_pairs(std::vector<v_element>& src, std::vector<v_element>& main_chain, std::vector<v_element>& pend_chain)
@@ -261,8 +327,6 @@ size_t PmergeMe::get_jacobsthal(size_t n)
     return get_jacobsthal(n - 1) + 2 * get_jacobsthal(n - 2);
 }
 
-	// print_group(begin, end); // TEST
-
 void	PmergeMe::sort_pairs(GroupIterator<std::vector<int>::iterator>& begin, GroupIterator<std::vector<int>::iterator>& end)
 {
 		// Trier l'interieur de chaque paire
@@ -274,15 +338,13 @@ void	PmergeMe::sort_pairs(GroupIterator<std::vector<int>::iterator>& begin, Grou
 		if (*next_it < *it)
 		{
 			std::swap_ranges(it.get_iterator(), it.get_iterator() + it.get_size(), next_it.get_iterator());
-			it++;
 		}
+			it++;
 	}
 }
 
 void	PmergeMe::print_group(v_element begin, v_element end)
 {
-	// std::cout<<" -- >> "<<*begin;
-	//  	std::cout<<" -- >> "<<*end;
 	while (begin != end)
 	{
 		std::cout<<" -- >> "<<*begin;
@@ -291,36 +353,3 @@ void	PmergeMe::print_group(v_element begin, v_element end)
 	std::cout<<" -- >> "<<*begin;
 }
 
-// BLOC INITIALEMENT AU DEPLIEMENT DE LA RECURSION
-	// Split main and pend chain : Fonction ?
-	// std::vector<int>	main_chain;
-	// std::vector<int>	pend_chain;
-	// for(GroupIterator<std::vector<int>::iterator> it = begin; it < end; ++it)
-	// {
-	// 	// pend_chain.insert(pend_chain.begin(), *it);
-	// 	pend_chain.push_back(*it);
-	// 	it++;
-	// 	// main_chain.insert(main_chain.begin(), *it);
-	// 	main_chain.push_back(*it);
-	// }
-	// std::cout << "Contenu de main chain : "<<std::endl;
-	// for (size_t i = 0; i < main_chain.size(); ++i)
-	// {
-	// 	std::cout << main_chain[i] <<std::endl;
-	// }
-	// std::cout << "Contenu de pend chain : "<<std::endl;
-	// for (size_t i = 0; i < pend_chain.size(); ++i)
-	// {
-	// 	std::cout << pend_chain[i] <<std::endl;
-	// }
-	// // Binary Search ( A FAIRE SUR new_begin et new_end et acceder au x et y de chaque paire)
-	// this->insert_main_chain(main_chain);
-	// this->insert_pend_chain(pend_chain);
-	// this->insert_pend_chain(pend_chain, main_chain);
-	// std::cout << "Contenu de main chain Apres insertion de pend_chain: "<<std::endl;
-	// for (size_t i = 0; i < main_chain.size(); ++i)
-	// {
-	// 	std::cout << main_chain[i] <<std::endl;
-	// }
-	// std::cout<<"Contenu de sorted_data : "<<std::endl;
-	// this->print_sorted_data();

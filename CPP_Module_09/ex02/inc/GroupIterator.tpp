@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   GroupIterator.tpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Enfoirax <Enfoirax@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clbernar <clbernar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:14:02 by clbernar          #+#    #+#             */
-/*   Updated: 2024/02/17 02:34:27 by Enfoirax         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:59:43 by clbernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "GroupIterator.hpp"
 
 template<typename Iterator>
-GroupIterator<Iterator>::GroupIterator(){}
+GroupIterator<Iterator>::GroupIterator() : m_size(0){}
 
 template<typename Iterator>
 GroupIterator<Iterator>::GroupIterator(Iterator it, size_t size) : m_it(it), m_size(size){}
@@ -126,9 +126,21 @@ bool GroupIterator<Iterator>::operator<(const GroupIterator& other) const
 }
 
 template<typename Iterator>
+bool GroupIterator<Iterator>::operator<=(const GroupIterator& other) const
+{
+		return m_it <= other.m_it;
+}
+
+template<typename Iterator>
 bool GroupIterator<Iterator>::operator>(const GroupIterator& other) const
 {
 		return m_it > other.m_it;
+}
+
+template<typename Iterator>
+bool GroupIterator<Iterator>::operator>=(const GroupIterator& other) const
+{
+		return m_it >= other.m_it;
 }
 
 // Getters
